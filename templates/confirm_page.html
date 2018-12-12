@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<p id="timer">
+120
+</p>
+
+<p>Is this something you would post on Facebook or another social network?</p>
+<p>{{content}}</p>
+<form method="POST" action="{{next_page}}">
+    <input type="hidden" name="step" value="{{step}}">
+    <button type="submit" name="action" value="Yes">Yes</button>
+    <button type="submit" name="action" value="No">No</button>
+</form>
+
+
+<embed src="" autostart="false" width="0" height="0" id="sound1"
+enablejavascript="true">
+
+<script>
+var timeLeft = 5;//10;
+var elem = document.getElementById('timer');
+
+var timerId = setInterval(countdown, 1000);
+
+function PlaySound(soundObj) {
+  var sound = document.getElementById(soundObj);
+  sound.Play();
+}
+
+function countdown() {
+  if (timeLeft == 0) {
+    //PlaySound("sound1")
+    clearTimeout(timerId);
+    elem.innerHTML = 0;
+  } else {
+    elem.innerHTML = timeLeft;
+    timeLeft--;
+  }
+}
+</script>
+
+</body>
+</html>

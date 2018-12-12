@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+<p>
+News story:  <a href={{link['link']}}> {{link['title']}} </a>
+</p>
+
+<p id="timer">
+120
+</p>
+
+
+<form method="POST" action="confirm.html">
+    <textarea name="text" placeholder="Write reaction here." rows="4" cols="50" id="reaction"></textarea>
+    <input type="hidden" name="step" value="{{step}}">
+    <input type="submit">
+</form>
+
+
+<embed src="" autostart="false" width="0" height="0" id="sound1"
+enablejavascript="true">
+
+<script>
+var timeLeft = 5;//120;
+var reactTime = 5;//45;
+var elem = document.getElementById('timer');
+
+var timerId = setInterval(countdown, 1000);
+
+function PlaySound(soundObj) {
+  var sound = document.getElementById(soundObj);
+  sound.Play();
+}
+
+function countdown() {
+  if (timeLeft == 0) {
+    //PlaySound("sound1")
+    var nameValue = document.getElementById("reaction").value;
+    if (nameValue != "" && reactTime != 0) {
+      elem.innerHTML = reactTime;
+      reactTime--;
+    } else if (reactTime != 0){
+      elem.innerHTML = "Please start your response.";
+    } else {
+      clearTimeout(timerId);
+      elem.innerHTML = 0;
+    }
+  } else {
+    elem.innerHTML = timeLeft;
+    timeLeft--;
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+
+<iframe src=""></iframe>
+
+<p id="timer">
+
+<form method="POST" action="ok.html">
+    <input name="text" width=400px height=300px>
+    <input type="submit">
+</form>
+
+</p>
+
+<script>
+var timeLeft = 180;
+var elem = document.getElementById('timer');
+
+var timerId = setInterval(countdown, 1000);
+
+function countdown() {
+  if (timeLeft == 0) {
+    clearTimeout(timerId);
+    elem.innerHTML = 0;
+  } else {
+    elem.innerHTML = timeLeft;
+    timeLeft--;
+  }
+}
+</script>
+
+</body>
+</html>
