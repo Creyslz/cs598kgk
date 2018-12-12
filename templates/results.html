@@ -1,0 +1,32 @@
+<form method="POST" action="finish.html">
+  <table>
+    <tr>
+    <td>
+      Here are your responses once again. Please go over them again and decide if they are something you would actually post to social media.
+      Take as much time as you need.
+    </td>
+    </tr>
+
+    {% for i in range(6) %}
+      
+    <tr>
+    <td>
+    {{responses[i]}}
+    </td>
+    </tr>
+    <tr>
+      <td>
+      <input type="radio" name="{{i ~ '_choice'}}" value="No">I would not make this post
+      <input type="radio" name="{{i ~ '_choice'}}" value="Yes">I would make this post
+      </td>
+    </tr>
+
+    {% endfor %}
+
+
+  </table>
+
+
+    <input type="submit">
+
+</form>

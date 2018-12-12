@@ -20,10 +20,13 @@
 enablejavascript="true">
 
 <script>
-var timeLeft = 5;//10;
+var timeLeft = 10;//10;
+var voiceDelay = 10;
 var elem = document.getElementById('timer');
 
 var timerId = setInterval(countdown, 1000);
+
+var voices = speechSynthesis.getVoices();
 
 function PlaySound(soundObj) {
   var sound = document.getElementById(soundObj);
@@ -31,8 +34,19 @@ function PlaySound(soundObj) {
 }
 
 function countdown() {
+  if ((timeLeft == voiceDelay) && {{play_voice}}) {
+    var msg = new SpeechSynthesisUtterance('{{content}}');
+    speechSynthesis.getVoices().forEach(function(voice) {
+      console.log(voice.name, voice.default ? voice.default :'');
+      if (voice.name === 'Google US English') {
+        msg.voice = voice;
+      }
+    });
+    msg.rate = .9;
+    window.speechSynthesis.speak(msg);
+  }
+
   if (timeLeft == 0) {
-    //PlaySound("sound1")
     clearTimeout(timerId);
     elem.innerHTML = 0;
   } else {
