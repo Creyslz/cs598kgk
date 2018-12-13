@@ -10,7 +10,7 @@ News story:  <a href={{link['link']}} target="_blank"> {{link['title']}} </a>
 </p>
 
 <p id="timer">
-120
+{{time_limit}}
 </p>
 
 
@@ -27,7 +27,7 @@ News story:  <a href={{link['link']}} target="_blank"> {{link['title']}} </a>
 </audio>
 
 <script>
-var timeLeft = 120;//120;
+var timeLeft = {{time_limit}};//120;
 var reactTime = 45;//45;
 var elem = document.getElementById('timer');
 var first = 1;
