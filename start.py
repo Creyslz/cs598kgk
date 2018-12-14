@@ -35,7 +35,7 @@ def getPartID():
   return pickle.load(open('pickle/part_id.p', 'rb'))
 
 def setPartID(a):
-  #pickle.dump(a, open('pickle/part_id.p', 'wb'))
+  pickle.dump(a, open('pickle/part_id.p', 'wb'))
   return
 
 def loadResponses(part_id):
@@ -48,7 +48,7 @@ def loadResponses(part_id):
 def saveResponse(response, part_id):
   responses = loadResponses(part_id)
   responses.append(response)
-  #pickle.dump(responses, open('pickle/' + str(part_id) + '_responses.p', 'wb'))
+  pickle.dump(responses, open('pickle/' + str(part_id) + '_responses.p', 'wb'))
 
 def loadDecisions(part_id):
   try:
@@ -56,19 +56,19 @@ def loadDecisions(part_id):
   except:
     return []
 
-# decision is expected to be a string (Yes/No).
+#decision is expected to be a string (Yes/No).
 def saveDecisions(decision, part_id):
   decisions = loadDecisions(part_id)
   decisions.append(decision)
   print(decisions)
-  #pickle.dump(decisions, open('pickle/' + str(part_id) + '_decisions.p', 'wb'))
+  pickle.dump(decisions, open('pickle/' + str(part_id) + '_decisions.p', 'wb'))
 
 def saveFinal(final, part_id):
-  #pickle.dump(final, open('pickle/' + str(part_id) + '_final.p', 'wb'))
+  pickle.dump(final, open('pickle/' + str(part_id) + '_final.p', 'wb'))
   return
 
 def saveSurvey(survey, part_id):
-  #pickle.dump(survey, open('pickle/' + str(part_id) + '_survey.p', 'wb'))
+  pickle.dump(survey, open('pickle/' + str(part_id) + '_survey.p', 'wb'))
   return
 
 

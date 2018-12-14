@@ -1,4 +1,4 @@
 import pickle
 
-a = 0
+a = 1
 pickle.dump(a, open('pickle/part_id.p', 'wb'))
