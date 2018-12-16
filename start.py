@@ -32,15 +32,15 @@ time_limits = [
 app = Flask(__name__)
 
 def getPartID():
-  return pickle.load(open('pickle/part_id.p', 'rb'))
+  return pickle.load(open('/home/keydex/cs598kgk/pickle/part_id.p', 'rb'))
 
 def setPartID(a):
-  pickle.dump(a, open('pickle/part_id.p', 'wb'))
+  pickle.dump(a, open('/home/keydex/cs598kgk/pickle/part_id.p', 'wb'))
   return
 
 def loadResponses(part_id):
   try:
-    return pickle.load(open('pickle/' + str(part_id) + '_responses.p', 'rb'))
+    return pickle.load(open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_responses.p', 'rb'))
   except:
     return []
 
@@ -48,11 +48,11 @@ def loadResponses(part_id):
 def saveResponse(response, part_id):
   responses = loadResponses(part_id)
   responses.append(response)
-  pickle.dump(responses, open('pickle/' + str(part_id) + '_responses.p', 'wb'))
+  pickle.dump(responses, open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_responses.p', 'wb'))
 
 def loadDecisions(part_id):
   try:
-    return pickle.load(open('pickle/' + str(part_id) + '_decisions.p', 'rb'))
+    return pickle.load(open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_decisions.p', 'rb'))
   except:
     return []
 
@@ -61,14 +61,14 @@ def saveDecisions(decision, part_id):
   decisions = loadDecisions(part_id)
   decisions.append(decision)
   print(decisions)
-  pickle.dump(decisions, open('pickle/' + str(part_id) + '_decisions.p', 'wb'))
+  pickle.dump(decisions, open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_decisions.p', 'wb'))
 
 def saveFinal(final, part_id):
-  pickle.dump(final, open('pickle/' + str(part_id) + '_final.p', 'wb'))
+  pickle.dump(final, open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_final.p', 'wb'))
   return
 
 def saveSurvey(survey, part_id):
-  pickle.dump(survey, open('pickle/' + str(part_id) + '_survey.p', 'wb'))
+  pickle.dump(survey, open('/home/keydex/cs598kgk/pickle/' + str(part_id) + '_survey.p', 'wb'))
   return
 
 
