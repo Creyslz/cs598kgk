@@ -30,7 +30,7 @@ time_limits = [
 ]
 
 app = Flask(__name__)
-debug = True
+debug = False
 
 def getNewPartID():
   if debug:
