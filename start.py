@@ -31,12 +31,21 @@ time_limits = [
 
 app = Flask(__name__)
 
-def getPartID():
+debug = True
+
+def getNewPartID():
+  if debug:
+    return '-1'
   return pickle.load(open('pickle/part_id.p', 'rb'))
 
 def setPartID(a):
+  if debug:
+    return
   pickle.dump(a, open('pickle/part_id.p', 'wb'))
   return
+
+def getPartID():
+  return requst['uid']
 
 def loadResponses(part_id):
   try:
@@ -84,7 +93,7 @@ def survey():
 
 @app.route('/intro.html', methods=['POST'])
 def instructions():
-  participant_id = getPartID() + 1
+  participant_id = getNewPartID() + 1
   setPartID(participant_id)
 
   survey_results = []
@@ -92,7 +101,7 @@ def instructions():
   for quest in ['login', 'post', 'time', 'reasons', 'others', 'regret']:
     survey_results.append(request.form[quest])
   saveSurvey(survey_results, getPartID())
-  return render_template('instructions.html')
+  return render_template('instructions.html', uid=participant_id)
 
 @app.route('/input.html', methods=['POST'])
 def hello_world():
@@ -103,7 +112,7 @@ def hello_world():
     saveDecisions(decision, getPartID())
 
   link = {'link':website[step-1], 'title':title[step-1]}
-  return render_template('article_page.html', link = link, step=step, time_limit=time_limits[step-1])
+  return render_template('article_page.html', link = link, step=step, time_limit=time_limits[step-1], uid=participant_id)
 
 @app.route('/confirm.html', methods=['POST'])
 def my_form_post():
@@ -120,14 +129,14 @@ def my_form_post():
     play_voice = 1
   else:
     play_voice = 0
-  return render_template('confirm_page.html', content=text, step=step+1, next_page=next_page, play_voice=play_voice)
+  return render_template('confirm_page.html', content=text, step=step+1, next_page=next_page, play_voice=play_voice, uid=participant_id)
 
 @app.route('/final.html', methods=['POST'])
 def final_check():
   decision = request.form['action']
   saveDecisions(decision, getPartID())
   responses = loadResponses(getPartID())
-  return render_template('results.html', responses = responses)
+  return render_template('results.html', responses = responses, uid=participant_id)
 
 @app.route('/finish.html', methods=['POST'])
 def finish():
