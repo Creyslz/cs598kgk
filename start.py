@@ -99,7 +99,7 @@ def instructions():
 
   for quest in ['login', 'post', 'time', 'reasons', 'others', 'regret']:
     survey_results.append(request.form[quest])
-  saveSurvey(survey_results, participant_id())
+  saveSurvey(survey_results, participant_id)
   return render_template('instructions.html', uid=participant_id)
 
 @app.route('/input.html', methods=['POST'])
