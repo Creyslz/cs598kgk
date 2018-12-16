@@ -104,6 +104,7 @@ def instructions():
 
 @app.route('/input.html', methods=['POST'])
 def hello_world():
+  participant_id = getPartID()
   step = int(request.form['step'])
 
   if step > 1:
@@ -132,6 +133,7 @@ def my_form_post():
 
 @app.route('/final.html', methods=['POST'])
 def final_check():
+  participant_id = getPartID()
   decision = request.form['action']
   saveDecisions(decision, getPartID())
   responses = loadResponses(getPartID())
