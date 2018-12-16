@@ -30,10 +30,11 @@ time_limits = [
 ]
 
 app = Flask(__name__)
+debug = True
 
-def getPartID():
+def getNewPartID():
   if debug:
-    return '-1'
+    return -1
   return pickle.load(open('/home/keydex/cs598kgk/pickle/part_id.p', 'rb'))
 
 def setPartID(a):
@@ -43,7 +44,7 @@ def setPartID(a):
   return
 
 def getPartID():
-  return requst['uid']
+  return int(request.form['uid'])
 
 def loadResponses(part_id):
   try:
