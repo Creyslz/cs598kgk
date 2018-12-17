@@ -17,8 +17,6 @@
 </form>
 
 
-<embed src="" autostart="false" width="0" height="0" id="sound1"
-enablejavascript="true">
 
 <script>
 var timeLeft = 10;//10;
@@ -28,11 +26,6 @@ var elem = document.getElementById('timer');
 var timerId = setInterval(countdown, 1000);
 
 var voices = speechSynthesis.getVoices();
-
-function PlaySound(soundObj) {
-  var sound = document.getElementById(soundObj);
-  sound.Play();
-}
 
 function countdown() {
   if ((timeLeft == voiceDelay) && {{play_voice}}) {
