@@ -47,7 +47,7 @@ function countdown() {
     window.speechSynthesis.speak(msg);
   }
 
-  if ((timeLeft == voiceDelay - 3)) {
+  if ((timeLeft <= voiceDelay - 3)) {
     document.getElementById('button1').disabled = false
     document.getElementById('button2').disabled = false
   }
