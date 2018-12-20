@@ -4,6 +4,7 @@ final project
 This is a flask project and can be run using the following commands
 
 $ export FLASK_APP=start.py
+
 $ flask run
 
 and then visiting
